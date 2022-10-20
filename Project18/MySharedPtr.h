@@ -33,17 +33,20 @@ inline MySharedPtr<T>::MySharedPtr(MySharedPtr<T>& sp)
 {
 	ptr = sp.ptr;
 	count = sp.count;
-	count++;
-	sp.count++;
+	if (sp.ptr!=nullptr)
+	{
+		count++;
+	}
 }
 
 template<class T>
 inline MySharedPtr<T>::~MySharedPtr()
 {
-	if (count == 1) {
-		delete ptr;
-	}
 	count--;
+	if (count == 0)
+	{
+	    delete ptr;
+	}
 
 }
 
@@ -58,8 +61,10 @@ inline void MySharedPtr<T>::operator=(MySharedPtr<T>& sp)
 {
 	ptr = sp.ptr;
 	count = sp.count;
-	count++;
-	sp.count++;
+	if (sp.ptr!=nullptr)
+	{
+		count++; 
+	}
 }
 
 template<class T>

@@ -29,7 +29,7 @@ int main()
 	MySharedPtr<Foo> p2;
 	p2 = p1;
 
-	cout << p1.GetCount() << endl;
+	cout << p2.GetCount() << endl;
 	cout << p2.Get() << ' ' << p2.Get()->GetNumber() << endl;
 	cout << p1.Get() << ' ' << p1.Get()->GetNumber() << endl;
 }
